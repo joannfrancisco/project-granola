@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -52,7 +53,7 @@ const About = () => {
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: container,
-          start: "top center", // starts when top reaches the middle of viewport
+          start: "top 90%", // starts when top reaches the middle of viewport
           end: "bottom top", // completes as it scrolls out
           scrub: true,
         },
@@ -73,11 +74,16 @@ const About = () => {
       {/* Background Image */}
       <div
         ref={backgroundRef}
-        className="bg-cover bg-center rounded-full"
-        style={{
-          backgroundImage: "url('./images/granolaAbout.png')",
-        }}
-      ></div>
+        className="relative rounded-full overflow-hidden"
+      >
+        <Image
+          src="/images/granolaAbout.png"
+          alt="Granola about background"
+          fill
+          className="object-cover object-center"
+          priority // optional: loads early if above the fold
+        />
+      </div>
 
       {/* Foreground Text */}
       <div
@@ -86,12 +92,12 @@ const About = () => {
       >
         <div className="h-4/12"></div>
         <h1
-          className="text-6xl lg:text-6xl font-extrabold mb-7 text-center"
+          className="text-6xl lg:text-7xl font-extrabold mb-7 text-center"
           style={{ fontFamily: "var(--font-chau-philomene-one)" }}
         >
           WE LOVE <br /> WHOLE FOODS
         </h1>
-        <p className="text-xl lg:text-2xl opacity-90 tracking-wide">
+        <p className="text-xl lg:text-3xl opacity-90 tracking-wide">
           Discover the world of whole foods
         </p>
       </div>

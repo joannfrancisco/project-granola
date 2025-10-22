@@ -1,100 +1,13 @@
-// "use client";
-// import { Search } from "lucide-react";
-
-// export default function Navbar() {
-//   const navLinks = [
-//     {
-//       name: "WHOLE FOODS",
-//       dropdown: [
-//         "WHAT ARE WHOLE FOODS?",
-//         "WHAT WHOLE FOODS DO FOR YOU",
-//         "THE FUTURE IS WHOLE FOODS",
-//       ],
-//     },
-//     {
-//       name: "ABOUT US",
-//       dropdown: ["ABOUT US", "OUR STORY", "THE TEAM", "FAQ"],
-//     },
-//     {
-//       name: "PRODUCTS",
-//       dropdown: ["BREAD", "CRACKERS", "GRANOLA", "CRUNCHY MUESLI BAR"],
-//     },
-//     { name: "RECIPES", dropdown: [] },
-//     { name: "BLOG", dropdown: [] },
-//     { name: "CONTACT", dropdown: [] },
-//   ];
-
-//   return (
-//     <nav
-//       className="flex items-center justify-between py-4 px-8 bg-[var(--background)] text-[var(--foreground)] relative"
-//       style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-//     >
-//       {/* Logo */}
-//       <div className="font-bold text-2xl tracking-wide cursor-pointer">
-//         gr8nola
-//       </div>
-
-//       {/* Center Links */}
-//       <ul className="flex gap-10">
-//         {navLinks.map((link, index) => (
-//           <li key={index} className="relative group">
-//             <button className="font-medium hover:opacity-80 transition cursor-pointer">
-//               {link.name}
-//             </button>
-
-//             {/* Dropdown (only show if not empty) */}
-//             {link.dropdown.length > 0 && (
-//               <div
-//                 className="absolute left-1/2 -translate-x-1/2 mt-3
-//           hidden group-hover:flex flex-col
-//           bg-[var(--foreground)] text-[var(--background)]
-//           rounded-lg shadow-lg py-2 px-3 w-48 text-sm text-left z-10
-//           before:content-[''] before:absolute before:top-[-8px] before:left-1/2 before:-translate-x-1/2
-//           before:w-0 before:h-0 before:border-l-[8px] before:border-r-[8px]
-//           before:border-b-[8px] before:border-l-transparent before:border-r-transparent
-//           before:border-b-[var(--foreground)]"
-//               >
-//                 {link.dropdown.map((item, i) => (
-//                   <div
-//                     key={i}
-//                     className="py-2 px-2 rounded hover:bg-[var(--background)] hover:text-[var(--foreground)] cursor-pointer transition"
-//                   >
-//                     {item}
-//                   </div>
-//                 ))}
-//               </div>
-//             )}
-//           </li>
-//         ))}
-//       </ul>
-
-//       {/* Right Section */}
-//       <div className="flex items-center gap-4">
-//         <Search className="w-5 h-5 cursor-pointer hover:opacity-80 transition" />
-//         <select className="bg-transparent text-[var(--foreground)] border border-[var(--foreground)] text-sm rounded px-2 py-1 hover:bg-[var(--foreground)] hover:text-[var(--background)] transition cursor-pointer">
-//           <option value="en" className="text-black">
-//             EN
-//           </option>
-//           <option value="ph" className="text-black">
-//             PH
-//           </option>
-//         </select>
-//       </div>
-//     </nav>
-//   );
-// }
-
 "use client";
-import { Search } from "lucide-react";
+import { Search, Menu, X, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
   Select,
@@ -103,9 +16,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Link } from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+
   const navLinks = [
     {
       name: "WHOLE FOODS",
@@ -128,100 +44,201 @@ const Navbar = () => {
     { name: "CONTACT", dropdown: [] },
   ];
 
-  return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between py-4 px-8 bg-[var(--background)] text-[var(--foreground)] "
-      style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-    >
-      {/* Logo */}
-      <div className="flex font-bold text-[40px] tracking-wide cursor-pointer">
-        gr<span className="text-[45px] font-normal">8</span>nola
-      </div>
+  const toggleDropdown = (index) => {
+    setOpenDropdown(openDropdown === index ? null : index);
+  };
 
-      <ul className="hidden md:flex gap-6">
-        {navLinks.map((link, index) => (
-          <li key={index} className="relative group">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  {/* If dropdown exists, show trigger; otherwise, show a simple link */}
-                  {link.dropdown.length > 0 ? (
-                    <>
-                      <NavigationMenuTrigger className="font-medium  hover:opacity-80 transition cursor-pointer">
-                        {link.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent
-                        className="absolute left-1/2 -translate-x-1/2 mt-3
+  return (
+    <header className="w-full fixed z-50 bg-[var(--background)]">
+      <nav
+        className="w-full flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 lg:px-8 text-[var(--foreground)]"
+        style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+      >
+        {/* Logo */}
+        <div className="flex font-bold text-[28px] sm:text-[36px] lg:text-[40px] tracking-wide cursor-pointer z-50">
+          gr
+          <span className="text-[32px] sm:text-[40px] lg:text-[45px] font-normal">
+            8
+          </span>
+          nola
+        </div>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex gap-4 xl:gap-6">
+          {navLinks.map((link, index) => (
+            <li key={index} className="relative group">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    {link.dropdown.length > 0 ? (
+                      <>
+                        <NavigationMenuTrigger className="font-medium text-base md:text-xl hover:opacity-80 transition cursor-pointer">
+                          {link.name}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent
+                          className="absolute left-1/2 -translate-x-1/2 mt-3
                             hidden group-hover:flex flex-col
                             bg-[var(--foreground)] text-[var(--background)]
                             rounded-lg shadow-lg py-2 px-0 text-left z-10
                             before:content-[''] before:absolute before:top-[-8px] before:left-1/3 before:-translate-x-1/2
                             before:w-0 before:h-0 before:border-l-[8px] before:border-r-[8px]
                             before:border-b-[8px] before:border-l-transparent before:border-r-transparent 
-                            before:border-b-[var(--foreground)] "
-                      >
-                        <ul className="grid gap-2 px-2 py-4 min-w-max">
-                          {link.dropdown.map((item, i) => (
-                            <li key={i}>
-                              <NavigationMenuLink
-                                // href={`/${item
-                                //   .toLowerCase()
-                                //   .replace(/\s+/g, "-")}`}
-                                className="block px-2 py-1 rounded-md 
+                            before:border-b-[var(--foreground)]"
+                        >
+                          <ul className="grid gap-2 px-2 py-4 min-w-max">
+                            {link.dropdown.map((item, i) => (
+                              <li key={i}>
+                                <NavigationMenuLink
+                                  className="block px-2 py-1 rounded-md text-base md:text-xl
                                     hover:bg-[var(--background)] hover:text-[var(--foreground)] 
                                     transition-all duration-400 ease-in-out cursor-pointer"
-                              >
-                                {item}
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <NavigationMenuLink className="px-2 py-1 font-medium cursor-pointer">
-                      {link.name}
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </li>
-        ))}
-      </ul>
+                                >
+                                  {item}
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <NavigationMenuLink className="px-2 py-1 font-medium text-base md:text-xl cursor-pointer">
+                        {link.name}
+                      </NavigationMenuLink>
+                    )}
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </li>
+          ))}
+        </ul>
 
-      {/* Right Section */}
-      <div className="flex items-center gap-4">
-        <div className="flex justify-center items-center w-14 h-14 bg-[var(--foreground)] text-[var(--background)] border-none text-lg rounded-full hover:bg-[var(--foreground)] hover:text-[var(--background)] transition cursor-pointer">
-          <Search className="w-6 h-6 cursor-pointer hover:opacity-80 transition" />
+        {/* Right Section */}
+        <div className="flex gap-2 sm:gap-4 items-center">
+          {/* Search Icon */}
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 cursor-pointer">
+            <Image
+              src="/images/circle.svg"
+              alt="Circle"
+              fill
+              className="object-contain z-0"
+            />
+            <Search className="absolute inset-0 m-auto w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 hover:opacity-80 transition text-[var(--background)]" />
+          </div>
+
+          {/* Language Selector */}
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 cursor-pointer">
+            <Image
+              src="/images/circle.svg"
+              alt="Circle"
+              fill
+              className="object-contain z-0"
+            />
+            <Select defaultValue="en">
+              <SelectTrigger className="absolute inset-0 m-auto text-[var(--background)] border-0 bg-transparent focus:ring-0 focus:ring-offset-0  md:text-xl text-base">
+                <SelectValue placeholder="EN" />
+              </SelectTrigger>
+              <SelectContent
+                className="bg-[var(--foreground)] text-[var(--background)] border-transparent rounded-xl min-w-max"
+                style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+                sideOffset={8}
+              >
+                <SelectItem
+                  value="en"
+                  className="hover:bg-[var(--background)] hover:text-[var(--foreground)] cursor-pointer text-base md:text-xl"
+                >
+                  EN
+                </SelectItem>
+                <SelectItem
+                  value="ph"
+                  className="hover:bg-[var(--background)] hover:text-[var(--foreground)] cursor-pointer text-base md:text-xl"
+                >
+                  PH
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Hamburger Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center z-50 "
+            aria-label="Toggle menu"
+          >
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
+              <Image
+                src="/images/circle.svg"
+                alt="Menu"
+                fill
+                className="object-contain"
+              />
+              {mobileMenuOpen ? (
+                <X className="absolute inset-0 m-auto w-5 h-5 sm:w-6 sm:h-6 text-[var(--background)]" />
+              ) : (
+                <Menu className="absolute inset-0 m-auto w-5 h-5 sm:w-6 sm:h-6 text-[var(--background)]" />
+              )}
+            </div>
+          </button>
         </div>
-        <div className="flex justify-center items-center w-14 h-14 bg-[var(--foreground)] text-[var(--background)] border-none text-lg rounded-full hover:bg-[var(--foreground)] hover:text-[var(--background)] transition cursor-pointer">
-          <Select defaultValue="en">
-            <SelectTrigger>
-              <SelectValue placeholder="EN" />
-            </SelectTrigger>
+      </nav>
 
-            <SelectContent
-              className="bg-[var(--foreground)] text-[var(--background)] rounded-xl border-none min-w-max mt-5"
-              style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden fixed top-[60px] sm:top-[72px] left-0 w-full bg-[var(--background)] transition-all duration-300 ease-in-out overflow-hidden ${
+          mobileMenuOpen
+            ? "max-h-[calc(100vh-60px)] opacity-100"
+            : "max-h-0 opacity-0"
+        }`}
+        style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+      >
+        <ul className="flex flex-col py-4 px-4 sm:px-6">
+          {navLinks.map((link, index) => (
+            <li
+              key={index}
+              className="border-b border-[var(--primary)] last:border-b-0"
             >
-              <SelectItem
-                value="en"
-                className="hover:bg-[var(--background)] hover:text-[var(--foreground)] cursor-pointer text-lg"
-              >
-                EN
-              </SelectItem>
-              <SelectItem
-                value="ph"
-                className="hover:bg-[var(--background)] hover:text-[var(--foreground)] cursor-pointer text-lg"
-              >
-                PH
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+              {link.dropdown.length > 0 ? (
+                <div>
+                  <button
+                    onClick={() => toggleDropdown(index)}
+                    className="w-full flex items-center justify-between py-3 sm:py-4 font-medium text-base md:text-lg hover:opacity-80 transition"
+                  >
+                    {link.name}
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-200 ${
+                        openDropdown === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <ul
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openDropdown === index ? "max-h-96 mb-2" : "max-h-0"
+                    }`}
+                  >
+                    {link.dropdown.map((item, i) => (
+                      <li key={i}>
+                        <a
+                          href="#"
+                          className="block py-2 pl-4 text-base md:text-lg hover:bg-[var(--primary)] rounded-md transition"
+                        >
+                          {item}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <a
+                  href="#"
+                  className="block py-3 sm:py-4 font-medium text-base sm:text-lg hover:opacity-80 transition"
+                >
+                  {link.name}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
+    </header>
   );
 };
 

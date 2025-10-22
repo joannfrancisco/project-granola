@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Chau_Philomene_One, Asul } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -35,7 +35,21 @@
   --color-ring: #fffaed;
 }
 
-/* Global Styles */
+@utility wrapper {
+  @apply max-w-7xl lg:mx-auto p-5 md:px-10 w-full;
+}
+/* html {
+  overflow-y: scroll;
+} */
+
+/* body[data-radix-scroll-lock] {
+  padding-right: var(--removed-body-scroll-bar-size, 0px);
+
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-asul);
+} */
+
 body {
   background: var(--background);
   color: var(--foreground);
