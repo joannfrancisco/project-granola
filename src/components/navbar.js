@@ -49,7 +49,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full fixed z-50 bg-[var(--background)]">
+    <header className="w-full flex items-center justify-center fixed z-50 bg-[var(--background)]  sm:bg-amber-200 md:bg-blue-300 lg:bg-cyan-500 xl:bg-emerald-700 2xl:bg-fuchsia-300">
       <nav
         className="w-full flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 lg:px-8 text-[var(--foreground)]"
         style={{ fontFamily: "var(--font-chau-philomene-one)" }}
@@ -134,7 +134,7 @@ const Navbar = () => {
               className="object-contain z-0"
             />
             <Select defaultValue="en">
-              <SelectTrigger className="absolute inset-0 m-auto text-[var(--background)] border-0 bg-transparent focus:ring-0 focus:ring-offset-0  md:text-xl text-base">
+              <SelectTrigger className="absolute inset-0 m-auto text-[var(--background)] border-0 bg-transparent shadow-transparent focus:ring-0 focus:ring-offset-0  md:text-xl text-base">
                 <SelectValue placeholder="EN" />
               </SelectTrigger>
               <SelectContent
@@ -183,7 +183,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed top-[60px] sm:top-[72px] left-0 w-full bg-[var(--background)] transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`lg:hidden fixed top-[60px] sm:top-[75px] left-0 w-full h-full bg-[var(--background)] transition-all duration-300 ease-in-out overflow-hidden ${
           mobileMenuOpen
             ? "max-h-[calc(100vh-60px)] opacity-100"
             : "max-h-0 opacity-0"
