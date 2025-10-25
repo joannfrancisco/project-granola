@@ -54,18 +54,18 @@ const Story = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[400vh] overflow-hidden flex items-start justify-center bg-[var(--primary)] sm:mt-[50vmin]"
+      className="relative min-h-[140vh] md:h-[150vh] lg:h-[180vmax] 2xl:h-[150vmax] w-screen overflow-hidden flex items-start justify-center bg-[var(--primary)]"
     >
       {/* Top Left - Hidden on mobile */}
       <div
         ref={(el) => (backgroundRefs.current[0] = el)}
-        className="hidden sm:block absolute top-20 sm:top-32 md:top-40 lg:top-52 left-2 sm:left-4 md:left-6 lg:left-10 w-[35vmin] sm:w-[40vmin] h-[35vmin] sm:h-[40vmin] opacity-60 sm:opacity-70 md:opacity-80 z-3"
+        className="hidden md:block absolute top-20 sm:top-32 md:top-100 left-2 md:left-[-150px] lg:left-0  2xl:left-[100px] w-[35vmin] sm:w-[40vmin] h-[35vmin] sm:h-[40vmin] opacity-0 md:opacity-80 z-3"
       >
         <Image
           src="/images/granola3.png"
           alt="Granola 3"
           fill
-          sizes="(max-width: 640px) 35vmin, 40vmin"
+          sizes="(max-width: 640px) 30vmin, 40vmin"
           className="object-cover rounded-lg pointer-events-none"
         />
       </div>
@@ -73,13 +73,13 @@ const Story = () => {
       {/* Top Right */}
       <div
         ref={(el) => (backgroundRefs.current[1] = el)}
-        className="hidden md:block absolute top-40 md:top-60 lg:top-80 right-[-20px] md:right-[-30px] lg:right-[-50px] w-[40vmin] md:w-[45vmin] lg:w-[50vmin] h-[40vmin] md:h-[45vmin] lg:h-[50vmin] opacity-60 md:opacity-70 lg:opacity-80 z-3"
+        className="hidden md:block absolute top-40 md:top-200 lg:top-250 right-[-20px] md:right-[-200px] lg:right-[-190px] xl:right-[-100px] w-[40vmin] md:w-[45vmin] lg:w-[50vmin] h-[40vmin] md:h-[45vmin] lg:h-[50vmin] md:opacity-70 lg:opacity-80 z-3"
       >
         <Image
           src="/images/granola4.png"
           alt="Granola 4"
           fill
-          sizes="(max-width: 768px) 40vmin, 50vmin"
+          sizes="(max-width: 640px) 30vmin, 40vmin"
           className="object-cover rounded-lg pointer-events-none"
         />
       </div>
@@ -87,13 +87,13 @@ const Story = () => {
       {/* Bottom Left */}
       <div
         ref={(el) => (backgroundRefs.current[2] = el)}
-        className="hidden lg:block absolute bottom-32 lg:bottom-40 xl:bottom-52 left-0 w-[35vmin] lg:w-[40vmin] h-[70vmin] lg:h-[90vmin] opacity-60 lg:opacity-80 z-3"
+        className="hidden md:block absolute bottom-0 lg:bottom-0 xl:bottom-52 left-0 w-[20vmin] lg:w-[25vmin] h-[45vmin] lg:h-[55vmin] opacity-0 md:opacity-80 z-3"
       >
         <Image
           src="/images/granola1.png"
           alt="Granola 1"
           fill
-          sizes="40vmin"
+          sizes="(max-width: 640px) 30vmin, 40vmin"
           className="object-cover rounded-lg pointer-events-none"
         />
       </div>
@@ -101,7 +101,7 @@ const Story = () => {
       {/* Bottom Right */}
       <div
         ref={(el) => (backgroundRefs.current[3] = el)}
-        className="hidden sm:block absolute bottom-[-150px] sm:bottom-[-200px] md:bottom-[-250px] lg:bottom-[-300px] right-4 sm:right-8 md:right-12 lg:right-20 w-[30vmin] sm:w-[35vmin] md:w-[40vmin] h-[30vmin] sm:h-[35vmin] md:h-[40vmin] opacity-60 sm:opacity-70 md:opacity-80 z-3"
+        className="hidden md:block absolute bottom-[-150px] sm:bottom-[-200px] md:bottom-[-700px] lg:bottom-[-700px] right-4 sm:right-8 md:right-[-80px] w-[30vmin] sm:w-[35vmin] md:w-[40vmin] h-[30vmin] sm:h-[35vmin] md:h-[40vmin] opacity-0 sm:opacity-70 md:opacity-80 z-3"
       >
         <Image
           src="/images/granola2.png"
@@ -115,7 +115,7 @@ const Story = () => {
       {/* Foreground Text */}
       <div
         ref={foregroundRef}
-        className="absolute inset-0 flex flex-col items-center justify-start mt-16 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-52 text-[var(--foreground)] px-4 sm:px-6 md:px-8"
+        className="text-shadow-[2px_2px_4px_rgba(0,0,0,0.4)] absolute inset-0 flex flex-col items-center justify-start mt-16 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-52 text-[var(--foreground)] px-4 sm:px-6 md:px-8 z-10"
       >
         <h1
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 text-center leading-tight sm:leading-[50px] md:leading-[70px] lg:leading-[90px] xl:leading-[110px]"

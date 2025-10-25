@@ -55,16 +55,16 @@ const Navbar = () => {
         style={{ fontFamily: "var(--font-chau-philomene-one)" }}
       >
         {/* Logo */}
-        <div className="flex font-bold text-[28px] sm:text-[36px] lg:text-[40px] tracking-wide cursor-pointer z-50">
+        <div className="flex font-bold text-[28px] md:text-[36px] lg:text-[40px] tracking-wide cursor-pointer z-50">
           gr
-          <span className="text-[32px] sm:text-[40px] lg:text-[45px] font-normal">
+          <span className="text-[32px] md:text-[40px] lg:text-[45px] font-normal">
             8
           </span>
           nola
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex gap-4 xl:gap-6">
+        <ul className="hidden xl:flex gap-4 xl:gap-6">
           {navLinks.map((link, index) => (
             <li key={index} className="relative group">
               <NavigationMenu>
@@ -113,20 +113,20 @@ const Navbar = () => {
         </ul>
 
         {/* Right Section */}
-        <div className="flex gap-2 sm:gap-4 items-center">
+        <div className="flex gap-2 md:gap-4 items-center">
           {/* Search Icon */}
-          <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 cursor-pointer">
+          <div className="relative w-10 h-10 md:w-14 md:h-14 cursor-pointer">
             <Image
               src="/images/circle.svg"
               alt="Circle"
               fill
               className="object-contain z-0"
             />
-            <Search className="absolute inset-0 m-auto w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 hover:opacity-80 transition text-[var(--background)]" />
+            <Search className="absolute inset-0 m-auto w-4 h-4 md:w-6 md:h-6 hover:opacity-80 transition text-[var(--background)]" />
           </div>
 
           {/* Language Selector */}
-          <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 cursor-pointer">
+          <div className="relative w-10 h-10 md:w-14 md:h-14 cursor-pointer">
             <Image
               src="/images/circle.svg"
               alt="Circle"
@@ -161,7 +161,7 @@ const Navbar = () => {
           {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center z-50 "
+            className="xl:hidden relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center z-50 "
             aria-label="Toggle menu"
           >
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
@@ -183,7 +183,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed top-[60px] sm:top-[75px] left-0 w-full h-full bg-[var(--background)] transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`xl:hidden fixed top-[60px] sm:top-[75px] md:top-[80px] left-0 w-full h-full bg-[var(--background)] transition-all duration-300 ease-in-out overflow-hidden ${
           mobileMenuOpen
             ? "max-h-[calc(100vh-60px)] opacity-100"
             : "max-h-0 opacity-0"

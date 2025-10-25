@@ -17,7 +17,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center h-auto py-25 sm:py-24 md:py-28 lg:h-screen text-center px-4 bg-[var(--background)] text-[var(--foreground)]">
+    <section className="flex flex-col items-center justify-center h-auto py-30 lg:h-screen text-center px-4 bg-[var(--background)] text-[var(--foreground)]">
       <div className="relative w-full max-w-7xl mx-auto flex justify-center">
         <h1
           className="w-fit relative text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mt-12 mb-4 sm:mt-16 md:mt-20 sm:mb-6 tracking-wide leading-tight sm:leading-[75px] md:leading-[90px] lg:leading-[130px]"
