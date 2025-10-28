@@ -54,7 +54,7 @@ const Story = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[140vh] md:h-[150vh] lg:h-[180vmax] 2xl:h-[150vmax] w-screen overflow-hidden flex items-start justify-center bg-[var(--primary)]"
+      className="relative h-[1200px] md:h-[1600px] lg:h-[1800px] xl:h-[2100px] w-screen px-12 overflow-hidden text-center bg-[var(--primary)] mt-30 md:mt-0 "
     >
       {/* Top Left - Hidden on mobile */}
       <div
@@ -101,7 +101,7 @@ const Story = () => {
       {/* Bottom Right */}
       <div
         ref={(el) => (backgroundRefs.current[3] = el)}
-        className="hidden md:block absolute bottom-[-150px] sm:bottom-[-200px] md:bottom-[-700px] lg:bottom-[-700px] right-4 sm:right-8 md:right-[-80px] w-[30vmin] sm:w-[35vmin] md:w-[40vmin] h-[30vmin] sm:h-[35vmin] md:h-[40vmin] opacity-0 sm:opacity-70 md:opacity-80 z-3"
+        className="hidden md:block absolute bottom-[-150px] sm:bottom-[-200px] md:bottom-[-700px] xl:bottom-[-300px] right-4 sm:right-8 md:right-[-80px] w-[30vmin] sm:w-[35vmin] md:w-[40vmin] h-[30vmin] sm:h-[35vmin] md:h-[40vmin] opacity-0 sm:opacity-70 md:opacity-80 z-3"
       >
         <Image
           src="/images/granola2.png"
@@ -115,7 +115,7 @@ const Story = () => {
       {/* Foreground Text */}
       <div
         ref={foregroundRef}
-        className="text-shadow-[2px_2px_4px_rgba(0,0,0,0.4)] absolute inset-0 flex flex-col items-center justify-start mt-16 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-52 text-[var(--foreground)] px-4 sm:px-6 md:px-8 z-10"
+        className=" text-shadow-[2px_2px_4px_rgba(0,0,0,0.4)] absolute inset-x-0 flex flex-col items-center justify-center pt-10 px-15 md:px-20 lg:px-30 text-[var(--foreground)] z-10"
       >
         <h1
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 text-center leading-tight sm:leading-[50px] md:leading-[70px] lg:leading-[90px] xl:leading-[110px]"
@@ -135,7 +135,7 @@ const Story = () => {
           <Leaf className="absolute inset-0 m-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[var(--background)] z-10" />
         </div>
 
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 max-w-4xl">
+        <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 max-w-4xl">
           We truly mean &quot;from nature&quot;. No additives. Simply pure.
         </h2>
 
@@ -150,7 +150,7 @@ const Story = () => {
           <Bean className="absolute inset-0 m-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[var(--background)] z-10" />
         </div>
 
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 max-w-4xl">
+        <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-18 max-w-4xl">
           We use &quot;whole&quot; nuts, seeds, legumes, pits, vegetables and
           fruits. So that you naturally get what your body nutritiously needs.
         </h2>
@@ -166,7 +166,7 @@ const Story = () => {
           <Vegan className="absolute inset-0 m-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-[var(--background)] z-10" />
         </div>
 
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-15 max-w-4xl">
+        <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[70px] text-center opacity-90 tracking-wide mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-15 max-w-4xl">
           That way you eat real and honest food with the taste of nature. The
           Future is Whole Foods.
         </h2>

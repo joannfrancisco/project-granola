@@ -90,7 +90,7 @@ const Products = () => {
           .fromTo(
             overlay,
             { y: "100%", opacity: 0 },
-            { y: "30%", opacity: 1, duration: 0.6, ease: "power3.out" },
+            { y: "25%", opacity: 1, duration: 0.6, ease: "power3.out" },
             "-=0.2"
           );
       });
@@ -140,103 +140,116 @@ const Products = () => {
   ];
 
   return (
-    <section className=" bg-amber-600 relative flex flex-col items-center justify-center gap-10 pl-30 pr-30 pb-30">
-      <h1
-        className="text-6xl lg:text-6xl  leading-[65px] font-bold self-start p-20 "
-        style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-      >
-        DISCOVER OUR TASTY <br /> PRODUCTS
-      </h1>
+    <section className="w-screen text-left py-12 lg:pt-20 px-12">
+      <div className="max-w-[1536px] mx-auto bg-[var(--background)] relative">
+        <h1
+          className="text-3xl md:text-5xl lg:text-6xl leading-9 md:leading-14 lg:leading-18 font-bold self-start mb-20"
+          style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+        >
+          DISCOVER OUR TASTY <br /> PRODUCTS
+        </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 justify-items-center items-center z-1">
-        {products.map((product, i) => (
-          <div key={i} className="relative overflow-visible">
-            {/* Circle Card */}
-            <div
-              ref={(el) => (circleRefs.current[i] = el)}
-              className="relative w-[70vmin] h-[70vmin] rounded-full bg-amber-400 overflow-hidden cursor-pointer"
-            >
-              <Image
-                src={product.src}
-                alt={product.text}
-                fill
-                className="object-cover p-10"
-              />
-
-              {/* Overlay */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center items-center z-1 mb-20">
+          {products.map((product, i) => (
+            <div key={i} className="relative overflow-visible">
+              {/* Circle Card */}
               <div
-                ref={(el) => (overlayRefs.current[i] = el)}
-                className="absolute inset-0 bg-black flex flex-col items-start justify-start opacity-0 pointer-events-none p-10 text-white"
+                ref={(el) => (circleRefs.current[i] = el)}
+                className="relative w-[70vmin] md:w-[40vmin]  xl:w-[70vmin] h-[70vmin] md:h-[40vmin] xl:h-[70vmin] rounded-full bg-[var(--primary)] overflow-hidden cursor-pointer"
               >
-                <p
-                  className=" text-3xl  mb-6"
-                  style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+                <Image
+                  src={product.src}
+                  alt={product.text}
+                  fill
+                  className="object-cover p-10"
+                />
+
+                {/* Overlay */}
+                <div
+                  ref={(el) => (overlayRefs.current[i] = el)}
+                  className="absolute shadow inset-0 bg-[var(--background85)]  hidden xl:flex flex-col items-start justify-start pointer-events-none p-5 text-[var(--foreground)]"
                 >
-                  {product.text}
-                </p>
-                <ul className="text-xl">
-                  <li className="flex gap-4 mb-3">
-                    <Leaf className="text-green-500" />
-                    <p>{product.desc1}</p>
-                  </li>
-                  <li className="flex gap-5 mb-3">
-                    <Leaf />
-                    <p>{product.desc2}</p>
-                  </li>
-                  <li className="flex gap-5 mb-3">
-                    <Leaf />
-                    <p>{product.desc3}</p>
-                  </li>
-                </ul>
-                <div className="flex justify-between gap-5 mt-6">
-                  <Button
-                    className="p-4 rounded-2xl text-xl font-bold  cursor-pointer w-[200px] h-[48px]"
-                    variant="outline"
+                  <p
+                    className=" text-3xl  mb-6"
                     style={{ fontFamily: "var(--font-chau-philomene-one)" }}
                   >
-                    COMPARE
-                  </Button>
-                  <Button
-                    className="p-4 rounded-2xl text-xl font-bold text-[var(--background)] bg-[var(--foreground)] cursor-pointer  w-[200px] h-[48px]"
-                    style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-                  >
-                    OUR STORY
-                  </Button>
+                    {product.text}
+                  </p>
+                  <ul className="text-xl">
+                    <li className="flex gap-4 mb-3">
+                      <Leaf className="text-green-500" />
+                      <p>{product.desc1}</p>
+                    </li>
+                    <li className="flex gap-5 mb-3">
+                      <Leaf className="text-green-500" />
+                      <p>{product.desc2}</p>
+                    </li>
+                    <li className="flex gap-5 mb-3">
+                      <Leaf className="text-green-500" />
+                      <p>{product.desc3}</p>
+                    </li>
+                  </ul>
+                  <div className="flex justify-between gap-5 mt-6">
+                    <Button
+                      className="p-4 rounded-2xl text-xl font-bold  cursor-pointer w-[180px] h-[48px] bg-[var(--primary)]"
+                      variant="outline"
+                      style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+                    >
+                      COMPARE
+                    </Button>
+                    <Button
+                      className="p-4 rounded-2xl text-xl font-bold text-[var(--primary)] bg-[var(--foreground)] cursor-pointer  w-[180px] h-[48px]"
+                      style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+                    >
+                      OUR STORY
+                    </Button>
+                  </div>
                 </div>
               </div>
+
+              {/* Accent Icon */}
+              <div
+                ref={(el) => (accentRefs.current[i] = el)}
+                className="absolute top-0 md:top-4 right-0 md:right-4 w-24 md:w-28 h-24 md:h-28 flex justify-center items-center z-10 pointer-events-auto group"
+                style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+              >
+                <Image
+                  src="/images/circle.svg"
+                  alt="Accent"
+                  fill
+                  className="object-contain"
+                />
+                <p className="text-[var(--background)] z-11 xl md:text-2xl">
+                  {product.tag}
+                </p>
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Accent Icon */}
-            <div
-              ref={(el) => (accentRefs.current[i] = el)}
-              className="absolute top-4 right-4 w-28 h-28 flex justify-center items-center z-10 pointer-events-auto group"
-              style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-            >
-              <Image
-                src="/images/circle.svg"
-                alt="Accent"
-                fill
-                className="object-contain"
-              />
-              <p className="text-amber-600 z-11 xl md:text-2xl">
-                {product.tag}
-              </p>
-            </div>
-          </div>
-        ))}
+        <div className="flex items-center justify-center flex-col xl:flex-row  mb-20 px-0 sm:px-2 gap-0 xl:gap-6 mt-0 xl:mt-20">
+          <h1
+            className="text-xl xl:text-3xl mb-4 xl:mb-0 text-center"
+            style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+          >
+            CURIOUS ABOUT OUR PRODUCTS?
+          </h1>
+          <Button
+            className="p-4 rounded-2xl text-xl xl:text-2xl font-bold text-[var(--primary)] bg-[var(--foreground)] cursor-pointer  w-[250px] xl:w-[300px] h-[48px] xl:h-[60px]"
+            style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+          >
+            SEE ALL OUR PRODUCTS
+          </Button>
+        </div>
+
+        {/* Vertical Text */}
+        {/* <h1
+            className="absolute right-0 top- rotate-90 text-[20vmin] font-bold z-[0]"
+            style={{ fontFamily: "var(--font-chau-philomene-one)" }}
+          >
+            PRODUCTS
+          </h1> */}
       </div>
-      <div>
-        <h1></h1>
-      </div>
-
-      {/* Vertical Text */}
-
-      <h1
-        className="sticky bottom-0 rotate-90 origin-bottom-right text-[20vmin] font-bold z-[0]"
-        style={{ fontFamily: "var(--font-chau-philomene-one)" }}
-      >
-        PRODUCTS
-      </h1>
     </section>
   );
 };

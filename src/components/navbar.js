@@ -49,9 +49,9 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full flex items-center justify-center fixed z-50 bg-[var(--background)]  sm:bg-amber-200 md:bg-blue-300 lg:bg-cyan-500 xl:bg-emerald-700 2xl:bg-fuchsia-300">
+    <header className="w-screen text-left xl:text-center fixed z-50 bg-[var(--background)] ">
       <nav
-        className="w-full flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 lg:px-8 text-[var(--foreground)]"
+        className="w-full mx-auto max-w-[1536px] h-[80px] flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 lg:px-8 text-[var(--foreground)]"
         style={{ fontFamily: "var(--font-chau-philomene-one)" }}
       >
         {/* Logo */}
@@ -161,7 +161,7 @@ const Navbar = () => {
           {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center z-50 "
+            className="xl:hidden relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-start z-50 "
             aria-label="Toggle menu"
           >
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">

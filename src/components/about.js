@@ -114,7 +114,7 @@ const About = () => {
   return (
     <section
       ref={containerRef}
-      className=" relative h-[90vmin] sm:h-[80vmin] md:h-[90vmin] lg:h-[135vmin]  overflow-visible flex items-start justify-center z-4"
+      className=" relative h-[60vmin] sm:h-[80vmin] md:h-[90vmin] lg:h-[135vmin]  overflow-visible flex items-start justify-center z-4"
     >
       {/* Background Image */}
       <div ref={backgroundRef} className="rounded-full overflow-hidden">
